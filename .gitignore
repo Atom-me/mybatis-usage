@@ -33,7 +33,7 @@ mybatis.iml
 */target
 */mvnw
 */mvnw.cmd
-*/.mvn
+*.mvn
 
 *.log*.class
 *target/
