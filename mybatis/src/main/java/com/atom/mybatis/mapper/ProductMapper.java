@@ -51,6 +51,30 @@ public interface ProductMapper {
     @Select("select * from products where pid = #{param1} and pname = #{param2} ")
     Product getByIdAndPname2(Integer id, String name);
 
+    /**
+     * 如果这里参数多个，在加了 @Params注解的情况下，
+     * #{} 里面你可以写 注解指定参数名称 或者 param1 param2 ...也可以映射到
+     *
+     * @param id
+     * @param name
+     * @return
+     */
+    @Select("select * from products where pid = #{first} and pname = #{senond} ")
+    Product getByIdAndPname3(@Param("first") Integer id, @Param("senond") String name);
+
+
+    /**
+     * 如果这里参数多个，在加了 @Params注解的情况下，
+     * #{} 里面你可以写 注解指定参数名称 或者 param1 param2 ...也可以映射到
+     *
+     * @param id
+     * @param name
+     * @return
+     */
+    @Select("select * from products where pid = #{param1} and pname = #{param2} ")
+    Product getByIdAndPname4(@Param("first") Integer id, @Param("senond") String name);
+
+
     @Select("select * from products order by pid desc")
     List<Product> queryByLists();
 

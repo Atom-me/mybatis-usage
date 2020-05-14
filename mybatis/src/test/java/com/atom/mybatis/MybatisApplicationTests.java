@@ -26,15 +26,26 @@ class MybatisApplicationTests {
 
     @Test
     void testGetByIdAndPname() {
-        Product product = productMapper.getByIdAndPname(4,"笔记本电脑");
+        Product product = productMapper.getByIdAndPname(4, "笔记本电脑");
         System.out.println(product);
     }
 
     @Test
     void testGetByIdAndPname2() {
-        Product product = productMapper.getByIdAndPname2(4,"笔记本电脑");
+        Product product = productMapper.getByIdAndPname2(4, "笔记本电脑");
         System.out.println(product);
     }
 
+    @Test
+    void testGetByIdAndPname3() {
+        Product product = productMapper.getByIdAndPname3(4, "笔记本电脑");
+        System.out.println(product);
+    }
+
+    @Test
+    void testGetByIdAndPname4() {
+        Product product = productMapper.getByIdAndPname4(4, "笔记本电脑");
+        System.out.println(product);
+    }
 
 }
