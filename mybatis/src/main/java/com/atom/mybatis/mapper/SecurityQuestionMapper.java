@@ -1,10 +1,9 @@
 package com.atom.mybatis.mapper;
 
 import com.atom.mybatis.bean.SecurityQuestionDO;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * @author Atom
@@ -38,18 +37,23 @@ public interface SecurityQuestionMapper {
      * 起了列别名之后，这一列的列名就变了，所以要同步修改@Result注解中的column
      * ）
      *
+     *
+     * @Results注解相当于  mapper.xml文件中     resultMap标签
+     *
      * @param id
      * @return
      */
-    @Results({
-            @Result(id = true, column = "id", property = "id"),
-            @Result(column = "creator", property = "creator"),
-            @Result(column = "create_time", property = "createTime"),
-            @Result(column = "update_time", property = "updateTime"),
-            @Result(column = "account_id", property = "accountId"),
-            @Result(column = "question_id", property = "questionId"),
-            @Result(column = "question", property = "question"),
-    })
+    @Results(
+            id = "securityQuestionMap",
+            value = {
+                    @Result(id = true, column = "id", property = "id"),
+                    @Result(column = "creator", property = "creator"),
+                    @Result(column = "create_time", property = "createTime"),
+                    @Result(column = "update_time", property = "updateTime"),
+                    @Result(column = "account_id", property = "accountId"),
+                    @Result(column = "question_id", property = "questionId"),
+                    @Result(column = "question", property = "question"),
+            })
     @Select("select  t.id," +
             " t.creator," +
             " t.create_time ," +
@@ -58,4 +62,28 @@ public interface SecurityQuestionMapper {
             " t.question_id ," +
             " t.question  from ua_security_question t where t.id = #{id}")
     SecurityQuestionDO selectById2(Integer id);
+
+
+    /**
+     * 同一个表的 @Result 可以共用，使用 @ResultMap 去引用即可，引用的值就是 @Results注解的id属性的值。
+     * <p>
+     * @ResultMap 这个注解给@Select或者@SelectProvider提供在XML映射中的<resultMap>的id。这使得注解的select可以复用那些定义在XML中的ResultMap。
+     *
+     * 如果同一select注解中还存在@Results或者@ConstructorArgs，那么这两个注解将被此注解(@ResultMap )覆盖。
+     *
+     * @param id
+     * @param ada
+     * @return
+     */
+    @ResultMap("securityQuestionMap")
+    @Select("select  t.id," +
+            " t.creator," +
+            " t.create_time ," +
+            " t.update_time ," +
+            " t.account_id ," +
+            " t.question_id ," +
+            " t.question  from ua_security_question t where t.question_id = #{id} and t.ada = #{ada}")
+    List<SecurityQuestionDO> selectByQuestionIdAndAda(Integer id, String ada);
+
+
 }
