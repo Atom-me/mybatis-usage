@@ -21,6 +21,7 @@ public interface ProductMapper {
     Integer update(Product product);
 
     /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数只有一个，在不加 @Params注解的情况下，#{} 里面你可以写任何东西都可以映射到
      *
      * @param id
@@ -30,6 +31,7 @@ public interface ProductMapper {
     Product getById(Integer id);
 
     /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数多个，在不加 @Params注解的情况下，
      * #{} 里面你可以写 形参名称 或者 param1 param2 ...也可以映射到
      *
@@ -41,6 +43,7 @@ public interface ProductMapper {
     Product getByIdAndPname(Integer id, String name);
 
     /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数多个，在不加 @Params注解的情况下，
      * #{} 里面你可以写 形参名称 或者 param1 param2 ...也可以映射到
      *
@@ -52,6 +55,7 @@ public interface ProductMapper {
     Product getByIdAndPname2(Integer id, String name);
 
     /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数多个，在加了 @Params注解的情况下，
      * #{} 里面你可以写 注解指定参数名称 或者 param1 param2 ...也可以映射到
      *
@@ -64,6 +68,7 @@ public interface ProductMapper {
 
 
     /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数多个，在加了 @Params注解的情况下，
      * #{} 里面你可以写 注解指定参数名称 或者 param1 param2 ...也可以映射到
      *
@@ -75,6 +80,11 @@ public interface ProductMapper {
     Product getByIdAndPname4(@Param("first") Integer id, @Param("senond") String name);
 
 
+    /**
+     * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
+     *
+     * @return
+     */
     @Select("select * from products order by pid desc")
     List<Product> queryByLists();
 
