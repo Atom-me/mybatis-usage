@@ -1,7 +1,6 @@
 package com.atom.mybatis;
 
 import com.atom.mybatis.bean.CustomerTags;
-import com.atom.mybatis.bean.UsedCarCustomer;
 import com.atom.mybatis.bean.UsedCarCustomerInfo;
 import com.atom.mybatis.mapper.UsedCarCustomerMapper;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,6 @@ public class UsedCarCustomerMapperTest {
     @Test
     public void testListTypeHandlerSelect() {
         UsedCarCustomerInfo customerInfoByMobile = mapper.getCustomerInfoByMobile("18718181818");
-
         System.out.println(customerInfoByMobile);
     }
 
@@ -33,7 +31,6 @@ public class UsedCarCustomerMapperTest {
         tags.setCustomerMobile("18718181818");
         List<String> strings = Arrays.asList("java", ".net", "php", "go");
         tags.setTags(strings);
-
         int i = mapper.updateTagsByCustomerMobile(tags);
         System.err.println(i);
     }
