@@ -1,7 +1,10 @@
 package com.atom.mybatis.mapper;
 
 import com.atom.mybatis.bean.ApproveDTO;
+import com.atom.mybatis.bean.SaleOrderApproval;
 import org.apache.ibatis.jdbc.SQL;
+
+import java.util.List;
 
 /**
  * @author atom
@@ -26,4 +29,17 @@ public class ApprovalProvider {
                 .WHERE("id = #{id}");
         return sql.toString();
     }
+
+
+    public String selectBySubmitUserId(final String submitUserId) {
+        return new SQL() {
+            {
+                SELECT("approval_status as approvalStatus,approval_remark as approvalRemark,update_time as updateTime");
+                FROM(TABLE_NAME);
+                WHERE("submit_user_id=#{submitUserId} ");
+            }
+        }.toString();
+    }
 }
+
+

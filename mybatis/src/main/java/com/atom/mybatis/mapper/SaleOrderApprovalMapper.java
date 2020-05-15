@@ -1,8 +1,12 @@
 package com.atom.mybatis.mapper;
 
 import com.atom.mybatis.bean.ApproveDTO;
+import com.atom.mybatis.bean.SaleOrderApproval;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
+
+import java.util.List;
 
 /**
  * @author Atom
@@ -18,4 +22,10 @@ public interface SaleOrderApprovalMapper {
      */
     @UpdateProvider(type = ApprovalProvider.class, method = "updateApprovalStatusAndRemarkById")
     int updateApprovalStatusAndRemarkById(ApproveDTO approveDTO);
+
+
+    @SelectProvider(type = ApprovalProvider.class, method = "selectBySubmitUserId")
+    List<SaleOrderApproval> selectBySubmitUserId(String submitUserId);
+
+
 }
