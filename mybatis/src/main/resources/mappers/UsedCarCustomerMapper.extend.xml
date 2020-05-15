@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atom.mybatis.mapper.UsedCarCustomerMapper">
+    <select id="findCustomerByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from used_car_customer
+        where deleted=0 AND telephone = #{telephone,jdbcType=VARCHAR}
+        order by created_time desc
+        limit 1
+    </select>
+    <select id="findAllCustomerByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from used_car_customer
+        where telephone = #{telephone,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateByTel" parameterType="com.atom.mybatis.bean.UsedCarCustomer">
+        update used_car_customer
+        <set>
+            <if test="telephone != null">
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=TINYINT},
+            </if>
+            <if test="customerStatus != null">
+                customer_status = #{customerStatus,jdbcType=TINYINT},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where telephone = #{telephone,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateTagsByCustomerMobile" parameterType="com.atom.mybatis.bean.CustomerTags">
+        update used_car_customer
+        <set>
+            tags = #{cus.tags,typeHandler=com.atom.mybatis.typehandler.ListTypeHandler},
+        </set>
+        where telephone = #{cus.customerMobile}
+    </update>
+</mapper>
