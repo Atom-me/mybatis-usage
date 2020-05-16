@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @author atom
+ */
 @Data
 public class UsedCarCustomer {
     /**

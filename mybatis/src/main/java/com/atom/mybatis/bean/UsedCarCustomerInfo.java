@@ -5,6 +5,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * @author atom
+ */
 @Data
 public class UsedCarCustomerInfo {
     private String id;

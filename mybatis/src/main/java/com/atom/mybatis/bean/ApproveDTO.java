@@ -15,7 +15,7 @@ public class ApproveDTO {
     @NotNull(message = "id 不能为空")
     private Integer id;
     private Integer approvalStatus;
-    private String approvalRemark = "";
+    private String approvalRemark;
     /**
      * 销售ID
      */
