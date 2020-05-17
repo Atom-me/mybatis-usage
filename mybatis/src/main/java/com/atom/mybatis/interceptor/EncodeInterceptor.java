@@ -18,6 +18,8 @@ import org.springframework.beans.BeanUtils;
 import java.util.*;
 
 /**
+ * 数据库表数据只能是一个加密版本，不能多版本共存，否则无法解密
+ *
  * @author Atom
  */
 @Intercepts(

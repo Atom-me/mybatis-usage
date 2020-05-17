@@ -20,9 +20,9 @@ public class UserMemberInfoMapperTest {
     public void testInsert() {
         UserMemberInfo info = new UserMemberInfo();
         info.setEmail("abc@xxx.com");
-        info.setIdNo("110999888877665543");
+        info.setIdNo("110999888877663333");
         info.setRealName("Atom");
-        info.setMobilePhone("18999999888");
+        info.setMobilePhone("18999999999");
         info.setUserName("sarming");
         int insert = mapper.insert(info);
         System.err.println(insert);
