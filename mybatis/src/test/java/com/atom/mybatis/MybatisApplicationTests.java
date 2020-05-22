@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 class MybatisApplicationTests {
@@ -28,6 +29,18 @@ class MybatisApplicationTests {
     void testGetByIdAndPname() {
         Product product = productMapper.getByIdAndPname(4, "笔记本电脑");
         System.out.println(product);
+    }
+
+    @Test
+    void testGetByPtypeAndPname() {
+        List<Product> products = productMapper.getByTypeAndPname("笔记本", "笔记本电脑");
+        products.forEach(System.out::println);
+    }
+
+    @Test
+    void testGetByPtypeAndPname2() {
+        List<Product> products = productMapper.getByTypeAndPname2("笔记本", "笔记本电脑");
+        products.forEach(System.out::println);
     }
 
     @Test

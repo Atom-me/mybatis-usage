@@ -22,7 +22,9 @@ public interface ProductMapper {
 
     /**
      * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
-     * 如果这里参数只有一个，在不加 @Params注解的情况下，#{} 里面你可以写任何东西都可以映射到
+     * <p>
+     * 如果这里参数只有一个，并且参数是基本类型，在不加 @Params注解的情况下，#{} 里面你可以写任何东西都可以映射到
+     * 即参数是基本类型 变量名可以随便写，#{id}，#{ids}，#{123}，#{xxgdsgdg},等都可以获得到参数。
      *
      * @param id
      * @return
@@ -31,6 +33,10 @@ public interface ProductMapper {
     Product getById(Integer id);
 
     /**
+     * useActualParamName 配置
+     * 允许使用方法签名中的名称作为语句参数名称。 为了使用该特性，你的工程必须采用Java 8编译，并且加上-parameters选项。（从3.4.1开始）
+     * 默认是true
+     * <p>
      * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
      * 如果这里参数多个，在不加 @Params注解的情况下，
      * #{} 里面你可以写 形参名称 或者 param1 param2 ...也可以映射到
@@ -41,6 +47,39 @@ public interface ProductMapper {
      */
     @Select("select * from products where pid = #{id} and pname = #{name} ")
     Product getByIdAndPname(Integer id, String name);
+
+
+    /**
+     * useActualParamName 配置
+     * 允许使用方法签名中的名称作为语句参数名称。 为了使用该特性，你的工程必须采用Java 8编译，并且加上-parameters选项。（从3.4.1开始）
+     * 默认是true
+     * <p>
+     * #mybatis.configuration.use-actual-param-name=true
+     * <p>
+     * #Caused by: org.apache.ibatis.binding.BindingException:
+     * Parameter 'arg0' not found. Available parameters are [name, type, param1, param2]
+     *
+     * @param type
+     * @param name
+     * @return
+     */
+    @Select("select * from products where type = #{type} and pname = #{name} ")
+    List<Product> getByTypeAndPname(String type, String name);
+
+
+    /**
+     * mybatis.configuration.use-actual-param-name=false
+     * <p>
+     * #Caused by: org.apache.ibatis.binding.BindingException:
+     * Parameter 'arg0' not found. Available parameters are [0, 1, param1, param2]
+     *
+     * @param type
+     * @param name
+     * @return
+     */
+    @Select("select * from products where type = #{0} and pname = #{1} ")
+    List<Product> getByTypeAndPname2(String type, String name);
+
 
     /**
      * 对查询结果的和bean属性的映射 这么写需要开启 ，驼峰命名自动映射 #mybatis.configuration.map-underscore-to-camel-case=true
