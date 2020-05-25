@@ -1,9 +1,13 @@
 package com.atom.mybatis.mapper;
 
+import com.atom.mybatis.bean.CustomerQuery;
 import com.atom.mybatis.bean.CustomerTags;
+import com.atom.mybatis.bean.UsedCarCustomer;
 import com.atom.mybatis.bean.UsedCarCustomerInfo;
 import com.atom.mybatis.typehandler.ListTypeHandler;
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * @author atom
@@ -30,4 +34,10 @@ public interface UsedCarCustomerMapper {
 
 
     int updateTagsByCustomerMobile(@Param("customer") CustomerTags customerTags);
+
+    List<UsedCarCustomerInfo> selectByConditionWrongWrite(CustomerQuery query);
+
+    List<UsedCarCustomerInfo> selectByConditionUseWhereTag(CustomerQuery query);
+
+
 }
