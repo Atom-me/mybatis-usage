@@ -1,7 +1,7 @@
 package com.atom.mybatisplus;
 
 import com.atom.mybatisplus.mapper.UserMapper;
-import com.atom.mybatisplus.model.User;
+import com.atom.mybatisplus.model.UserDO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,8 +24,8 @@ public class SampleTest {
     @Test
     public void testSelect() {
         System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
-        userList.forEach(System.out::println);
+        List<UserDO> userDOList = userMapper.selectList(null);
+        Assert.assertEquals(5, userDOList.size());
+        userDOList.forEach(System.err::println);
     }
 }
