@@ -30,12 +30,11 @@ public class UsedCarCustomerMapperTest {
 
     @Test
     public void testListTypeHandlerUpdate() {
+        List<String> tagList = Arrays.asList("atom", ".net", "php", "go");
         CustomerTags tags = new CustomerTags();
-        tags.setCustomerMobile("18718181818");
-        List<String> strings = Arrays.asList("java", ".net", "php", "go");
-        tags.setTags(strings);
-        int i = mapper.updateTagsByCustomerMobile(tags);
-        System.err.println(i);
+        tags.customerMobile("18718181818")
+                .tags(tagList);
+        Assertions.assertTrue(mapper.updateTagsByCustomerMobile(tags) > 0);
     }
 
     /**

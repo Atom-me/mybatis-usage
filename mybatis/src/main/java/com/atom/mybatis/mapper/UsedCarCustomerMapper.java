@@ -16,6 +16,12 @@ import java.util.List;
 public interface UsedCarCustomerMapper {
 
 
+    /**
+     * 根据手机号查询客户信息
+     *
+     * @param customerMobile
+     * @return
+     */
     @Select("SELECT  t.id," +
             " t.telephone as customerPhone, " +
             " t.`name` as customerName,  " +
@@ -33,6 +39,12 @@ public interface UsedCarCustomerMapper {
     UsedCarCustomerInfo getCustomerInfoByMobile(@Param("mobile") String customerMobile);
 
 
+    /**
+     * 根据手机号更新客户微信标签
+     *
+     * @param customerTags
+     * @return
+     */
     int updateTagsByCustomerMobile(@Param("customer") CustomerTags customerTags);
 
     List<UsedCarCustomerInfo> selectByConditionWrongWrite(CustomerQuery query);

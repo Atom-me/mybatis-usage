@@ -5,7 +5,7 @@
     <update id="updateTagsByCustomerMobile" parameterType="com.atom.mybatis.bean.CustomerTags">
         update used_car_customer
         <set>
-            tags = #{cus.tags,typeHandler=com.atom.mybatis.typehandler.ListTypeHandler},
+            tags = #{customer.tags, typeHandler=com.atom.mybatis.typehandler.ListTypeHandler},
         </set>
         where telephone = #{customer.customerMobile}
     </update>
@@ -13,14 +13,11 @@
 
     <!-- 这么写是一种错误的写法，如果 name 条件不匹配，即 name 为空，最后的SQL就会多一个 and 关键字。
     我们 可以 使用trim标签去除多余的and关键字
-
-
     select
         *
     from
         used_car_customer t
     where
-
         and t.age = 88;
      -->
     <select id="selectByConditionWrongWrite" parameterType="com.atom.mybatis.bean.CustomerQuery"
