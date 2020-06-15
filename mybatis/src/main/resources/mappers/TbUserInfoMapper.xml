@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atom.mybatis.mapper.TbUserInfoMapper">
+
+
+    <insert id="insert" parameterType="com.atom.mybatis.bean.TbUserInfoDO">
+        INSERT INTO db_products.tb_user_info ( name, age, gender, grade, email, user_state, str_enum)
+        VALUES (
+                #{name},
+                #{age},
+                #{gender},
+                #{grade },
+                #{email},
+                #{userState},
+                #{strEnum}
+                )
+    </insert>
+</mapper>
