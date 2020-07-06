@@ -19,20 +19,20 @@ public class SecurityQuestionMapperTest {
     @Test
     void testSelectById() {
         SecurityQuestionDO securityQuestionDO = mapper.selectById(61);
-        System.out.println(securityQuestionDO);
+        System.err.println(securityQuestionDO);
     }
 
     @Test
     void testSelectById2() {
         SecurityQuestionDO securityQuestionDO = mapper.selectById2(61);
-        System.out.println(securityQuestionDO);
+        System.err.println(securityQuestionDO);
     }
 
     @Test
-    void testSelectByIdAndAda() {
-        List<SecurityQuestionDO> securityQuestionDOS = mapper.selectByQuestionIdAndAda(1, "593");
-        System.out.println();
-        securityQuestionDOS.forEach(System.out::println);
+    void testSelectById3() {
+        List<SecurityQuestionDO> securityQuestionDOS = mapper.selectByQuestionId(1);
+        System.err.println();
+        securityQuestionDOS.forEach(System.err::println);
     }
 
 }

@@ -18,9 +18,6 @@ public class BindPhoneMapperTest {
     @Resource
     private BindPhoneMapper bindPhoneMapper;
 
-    @Test
-    public void findByAmwayId() {
-    }
 
     /**
      * 使用  @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id") 返回主键ID

@@ -46,10 +46,6 @@ public class SecurityQuestionDO {
      */
     private Long accountId;
 
-    /**
-     * 安利号码
-     */
-    private String ada;
 
     /**
      * 问题
