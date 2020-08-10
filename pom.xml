@@ -12,6 +12,7 @@
     <artifactId>mybatis-usage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mybatis-usage</name>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -78,6 +79,11 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-tool</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 
