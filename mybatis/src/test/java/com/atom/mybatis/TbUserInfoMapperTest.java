@@ -19,6 +19,9 @@ public class TbUserInfoMapperTest {
     @Resource
     private TbUserInfoMapper tbUserInfoMapper;
 
+    /**
+     * 数据库和表的字符集类型都为 utf8mb4 才可插入emoji符号
+     */
     @Test
     public void testInsert() {
         TbUserInfoDO tbUserInfoDO = new TbUserInfoDO();
@@ -27,7 +30,7 @@ public class TbUserInfoMapperTest {
                 .gender(GenderEnum.FEMALE)
                 .grade(GradeEnum.SECONDORY)
                 .email("sarming@126.com")
-                .name("Atom");
+                .name("Atom🌹");
         tbUserInfoMapper.insert(tbUserInfoDO);
     }
 }
