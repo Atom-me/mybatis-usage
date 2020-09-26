@@ -62,7 +62,7 @@ public class MybatisConfiguration implements InitializingBean {
     }
 
     /**
-     * 自定义相关注册器
+     * register customer type handler
      *
      * @return
      */
@@ -91,7 +91,7 @@ public class MybatisConfiguration implements InitializingBean {
     }
 
     /**
-     * 搜索实现IEnum接口的枚举类
+     * scan customer enum class
      *
      * @param enumBasePackages
      * @return
@@ -113,7 +113,7 @@ public class MybatisConfiguration implements InitializingBean {
     }
 
     /**
-     * 解析包路径
+     * parse package path
      *
      * @param enumBasePackages
      * @return
