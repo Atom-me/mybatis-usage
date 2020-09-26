@@ -24,7 +24,7 @@ public class EmojiTypeHandler extends BaseTypeHandler<String> {
 
     /**
      * @param rs
-     * @param columnName Colunm name, when configuration <code>useColumnLabel</code> is <code>false</code>
+     * @param columnName Column name, when configuration <code>useColumnLabel</code> is <code>false</code>
      */
     @Override
     public String getNullableResult(ResultSet rs, String columnName) throws SQLException {
